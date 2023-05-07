@@ -28,7 +28,7 @@ function CartItem({ apparel, handleCartTotal }) {
 
   return (
     <div className="flex w-1/2 h-fit border shadow p-4">
-      <div className="p-4">
+      <div className="">
         <img src={apparel.imageSrc} alt="apparel" />
       </div>
       <div className="flex flex-col justify-between ml-4">
@@ -55,7 +55,7 @@ function CartItem({ apparel, handleCartTotal }) {
             </span>
             <button
               className={`p-1 border text-lg ${
-                qty === 1 ? "hidden" : undefined
+                apparel.qty ? apparel.qty : qty === 1 ? "hidden" : undefined
               }`}
               onClick={() => handleClick("dec")}
               disabled={qty === 1}
@@ -63,7 +63,9 @@ function CartItem({ apparel, handleCartTotal }) {
               <GoDash />
             </button>
           </div>
-          <p className="text-xl font-bold">${apparel.price * qty}</p>
+          <p className="text-xl font-bold">
+            ${apparel.qty ? apparel.qty * apparel.price : qty * apparel.price}
+          </p>
         </div>
       </div>
     </div>
