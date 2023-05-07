@@ -6,8 +6,11 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addItemToCart = (item) => {
-    console.log(item);
     setCartItems([...cartItems, item]);
+  };
+
+  const removeItemFromCart = (itemToRemove) => {
+    setCartItems(cartItems.filter((item) => item.id !== itemToRemove.id));
   };
 
   return (
@@ -15,6 +18,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cartItems,
         addItemToCart,
+        removeItemFromCart,
       }}
     >
       {children}
