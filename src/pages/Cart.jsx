@@ -12,12 +12,18 @@ function Cart() {
 
   const [cartTotal, setCartTotal] = useState(
     cartItems.reduce((acc, curr) => {
+      if (curr.qty) {
+        return acc + curr.qty * curr.price;
+      }
       return acc + curr.price;
     }, 0)
   );
   useEffect(() => {
     setCartTotal(
       cartItems.reduce((acc, curr) => {
+        if (curr.qty) {
+          return acc + curr.qty * curr.price;
+        }
         return acc + curr.price;
       }, 0)
     );

@@ -6,15 +6,19 @@ import cartContext from "../context/cartContext";
 function CartItem({ apparel, handleCartTotal }) {
   const [qty, setQty] = useState(1);
 
-  const { removeItemFromCart } = useContext(cartContext);
+  const { removeItemFromCart, updateItemInCart } = useContext(cartContext);
 
   const handleClick = (action) => {
-    if (action === "inc") {
-      setQty(qty + 1);
-      handleCartTotal("add", apparel);
-    } else if (action === "dec") {
-      setQty(qty - 1);
-      handleCartTotal("remove", apparel);
+    if (qty >= 1) {
+      if (action === "inc") {
+        setQty(qty + 1);
+        handleCartTotal("add", apparel);
+        updateItemInCart(apparel, qty + 1);
+      } else if (action === "dec") {
+        setQty(qty - 1);
+        handleCartTotal("remove", apparel);
+        updateItemInCart(apparel, qty - 1);
+      }
     }
   };
 
@@ -46,10 +50,15 @@ function CartItem({ apparel, handleCartTotal }) {
             >
               <GoPlus />
             </button>
-            <span className="py-1 px-2 border font-bold">{qty}</span>
+            <span className="py-1 px-2 border font-bold">
+              {apparel.qty ? apparel.qty : 1}
+            </span>
             <button
-              className="p-1 border text-lg"
+              className={`p-1 border text-lg ${
+                qty === 1 ? "hidden" : undefined
+              }`}
               onClick={() => handleClick("dec")}
+              disabled={qty === 1}
             >
               <GoDash />
             </button>
