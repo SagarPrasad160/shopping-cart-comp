@@ -5,11 +5,16 @@ import cartContext from "../context/cartContext";
 import { toast } from "react-toastify";
 
 function ApparelListItem({ apparel }) {
-  const { addItemToCart } = useContext(cartContext);
+  const { addItemToCart, cartItems } = useContext(cartContext);
 
   const handleAdd = (apparel) => {
-    addItemToCart(apparel);
-    toast.success("Item added to Cart");
+    const itemExists = cartItems.find((item) => item.id === apparel.id);
+    if (itemExists) {
+      toast.error("Item is already in cart");
+    } else {
+      addItemToCart(apparel);
+      toast.success("Item added to Cart");
+    }
   };
 
   return (
@@ -19,7 +24,7 @@ function ApparelListItem({ apparel }) {
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          {apparel.name} - {apparel.price}
+          {apparel.name} - ${apparel.price}
         </h2>
         <p>{apparel.description}</p>
         <div className="card-actions justify-end">

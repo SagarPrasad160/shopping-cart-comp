@@ -42,6 +42,30 @@ const apparels = [
       "This is a lightweight and comfortable T-shirt for summer wear.",
     price: 15,
   },
+  {
+    id: 6,
+    imageSrc:
+      "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=380&q=80",
+    name: "Black Leather Jacket",
+    description: "A classic black leather jacket that never goes out of style.",
+    price: 100,
+  },
+  {
+    id: 7,
+    imageSrc:
+      "https://images.unsplash.com/photo-1520775300995-e316f4a6c2d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    name: "Vintage Denim Jacket",
+    description: "A retro-inspired denim jacket with a distressed finish.",
+    price: 75,
+  },
+  {
+    id: 8,
+    imageSrc:
+      "https://images.unsplash.com/photo-1605794432120-f4bb5dc9067d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    name: "Casual Sweatshirt",
+    description: "A cozy sweatshirt with a relaxed fit, perfect for lounging.",
+    price: 35,
+  },
 ];
 
 function Home() {

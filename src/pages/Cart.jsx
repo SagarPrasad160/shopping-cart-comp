@@ -4,6 +4,7 @@ import cartContext from "../context/cartContext";
 
 import CartItem from "../components/CartItem";
 
+import EmptyCart from "../components/EmptyCart";
 import { toast } from "react-toastify";
 
 function Cart() {
@@ -31,11 +32,7 @@ function Cart() {
   };
 
   if (cartItems.length === 0) {
-    return (
-      <h1>
-        Items you add in the cart will show up here,No Items in the display yet.
-      </h1>
-    );
+    return <EmptyCart />;
   }
 
   return (
